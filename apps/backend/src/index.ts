@@ -129,9 +129,11 @@ const app = new Elysia()
     return { data: result, message: "Course submissions retrieved" };
   })
 
-  .listen(3000);
-
-console.log(`🦊 Backend → http://localhost:${app.server?.port}`);
-console.log(`📖 Swagger → http://localhost:${app.server?.port}/swagger`);
+app.listen(3000, () => {
+  console.log(`🔥 Backend running at http://localhost:3000`);
+  console.log(`FRONTEND_URL → ${process.env.FRONTEND_URL}`);
+  console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`);
+  console.log(`GOOGLE_REDIRECT_URI: ${process.env.GOOGLE_REDIRECT_URI}`);
+});
 
 export type App = typeof app;
